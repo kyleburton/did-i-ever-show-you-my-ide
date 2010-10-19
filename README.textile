@@ -1,0 +1,103 @@
+h1. Overview
+
+This is an idea for a talk.  I've often said that joking around with my
+co-workers as share more and more tips and tricks for improving our efficiency
+and getting better with our tools.  I have drifted squarely into the "Unix is
+my IDE" camp over the 15 or so years of my career as a developer.  The more
+I've embraced that idea, the more I have been able to do in less time.
+
+The learning curve is high, my goal with this presentation is to show you
+why it's worthwhile.
+
+h1. Did I Ever Show You my IDE?
+
+h1. Different OSs
+
+* Windows
+* Mac OSX
+* Linux
+
+h1. Different IDEs
+
+* Eclipse
+* Visual Studio
+* Intellij IDEA
+
+h1. X Windows
+
+Who talks about X Windows anymore?  
+
+Gnome vs KDE : I don't care.  I don't really leverage them when developing
+code, working with databases or doing analysis.
+
+C-F12    : Launch a Terminal
+ALT-HOME : Toggle Min/Max
+
+I realize these represent a full desktop environment, but I don't leverage them
+that way for most of my development - use it like it's Ratpoision (wm).
+
+h1. Unix Shell
+
+h1. Screen
+
+h1. Coreutils and Binutils
+
+The utilities I feel are 'all stars' that come with all Unix or Unix-like (OSX)
+operating systems are: 
+
+  cut, grep, fgrep, tr, perl, ruby, sort, uniq, tee, head, tail
+
+My Own:
+
+  rec-view, hgrep, hsort, htail
+
+h1. Simulating SQL
+
+ SELECT * from X WHERE y = ?
+
+ grep 'pattern' input-file
+ grep '*delim*pattern*delim*' input-file
+
+h1. Quick Data Analysis
+
+ Counts / Group By (histograms):
+
+ SELECT x,COUNT(x) FROM table GROUP BY ORDER BY COUNT(x)
+
+ cut -fX inp-file | sort | uniq -c | sort -nr 2>&1 | tee results.counts
+
+The GNU Binutils are extremely efficient.  It can be faster on some systems to 
+work with data using these command line tools than it is using SQL in a databse.
+
+h1. Faster Database Imports
+
+  Drop Constraints
+  Import data using RDBMSs 'import' statement: 
+    Postgres: 'COPY FILE'
+    Mysql:    'LOAD DATA INFILE'
+  Re-Enable Constarints
+
+What about the sequence based ID columns?  Calling seq functions slows down imports, so
+the new steps become:
+
+  Prefix each row with an ID
+  Drop Constraints
+  Import data using RDBMSs 'import' statement: 
+    Postgres: 'COPY FILE'
+    Mysql:    'LOAD DATA INFILE'
+  Re-Enable Constarints
+  Update Sequence to be past the last value.
+
+Prepend an ID for import / Prefixing a row with the id:
+
+  (echo "ID\t$(head -n1 input-file.tab)"; ruby -ne 'puts( ($.+12345), $_ )' input-file.tab) > input-file-with-ids.tab
+
+h1. Fixing Rows that don't have enough Delimiters:
+
+  ruby -ane '$_ += "\t\t\t" if $F.size != 7' input-file.txt > input-file-fixed.txt
+
+h1. Quickly Determining Fill Rates:
+
+  ...
+
+
