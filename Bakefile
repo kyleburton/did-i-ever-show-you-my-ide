@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+bake_task markdown
+function markdown {
+    if ! which grip >/dev/null 2>&1; then
+        brew install grip
+    fi
+    grip --norefresh README-2.md 8888
+}
+
+function ensure-gem {
+    local gem
+    gem="$1"
+    (gem list | grep "^$gem") || gem install "$gem"
+}
+
+bake_task ruby-markdown
+function ruby-markdown {
+    local rerun_bin
+    # if ! which rerun >/dev/null 2>&1; then
+    #     echo "Installing rerun..."
+    #     sudo apt-get install rerun
+    # fi
+    for gem in github-markdown filewatcher thin sinatra sinatra-contrib rerun; do
+        ensure-gem "$gem"
+    done
+    rerun_bin="$(gem contents rerun | grep /bin/ | head -n1 | tr -d \\n)"
+    "$rerun_bin" 'ruby ./scripts/github-markdown.rb README-2.md'
+}
