@@ -62,10 +62,8 @@ So, where do we start?  Let's start with a model :-D
 # I've Got 99^99 Problems ...
 
 ```
-> echo '99^99' | bc
-36972963764972677265718790562880544059566876428174110243025997242355\
-25704552775234214106500101282327279409788895483265401194299967694943\
-59451621570193644014418071060667659301384999779999159200499899
+> echo '99^99' | bc | tr -d '\n\\'; echo
+369729637649726772657187905628805440595668764281741102430259972423552570455277523421410650010128232727940978889548326540119429996769494359451621570193644014418071060667659301384999779999159200499899
 ```
 
 I see a few phases to the way we approach developing and evolving our systems:
@@ -83,6 +81,7 @@ Do we know what the problem is we're solving?  Usually we don't, we think we do 
 
 #### Tools and Approaches
 
+* Thinking, Brainstorming, TRIZ
 * Whiteboards
 * Proposal and Analysis Documents
 * Throw Away Expiremental Code
@@ -209,3 +208,4 @@ IntelliJ and Eclipse are amazing tools for writing and debugging code.  IMO they
 * What I do with terminals, `named-screen`
 * `rclone` why it exists
 * Clojure the JVM and CIDER
+* The tools I just created this past week, the purpose of the completion is to bring the info we need to where we need it when we need it.
