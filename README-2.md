@@ -192,7 +192,7 @@ I think these lead to composition of smaller bits into larger bits, where you're
 
 # Hit the Terminal
 
-The shell is an unbounded tool for interacting with your system - constrainted entirely within the semantics of repeatability and automatability.
+The shell is an unbounded tool for interacting with your system - within the semantics of repeatability and automatability.  Everything you type at the terminal **<u>_is_</u>** a shell script.
 
 VIM is an unbounded tool for manipulating text.  It provides primitives (motions and actions) that you compose to achieve your goals.  They typicall able to be composed in ways that scale.
 
@@ -202,10 +202,73 @@ Screen is a tool for composing my workspaces.
 
 IntelliJ and Eclipse are amazing tools for writing and debugging code.  IMO they integrate (for me) a too finite set of aspects: manipulating code (they do this amazingly well); compilation (primarily focused on the language tooling); and debugging (mostly focused on artificial execution domains).
 
+I think I've met programmers who don't like "stepping down" out of their Eclipse, IMO this tends to constrain their thinking to the implementation domain.
+
 
 # Demonstrations
 
+* You'll pick these up over time, especially if we collaborate with each other :)
+* things take text, process text and emit text, this is more useful than you might think at first
 * What I do with terminals, `named-screen`
-* `rclone` why it exists
+* `rclone` why it exists, how it works
 * Clojure the JVM and CIDER
-* The tools I just created this past week, the purpose of the completion is to bring the info we need to where we need it when we need it.
+* The tools I created recently - the purpose of the completion is to bring the info we need to where we need it when we need it.
+
+## The things you'll see me type at the shell
+
+aka The shells "all stars"
+
+cut, grep, fgrep, tr, sort, uniq, tee, head, tail, jq, wc
+
+You can simulate a lot of what you'd do in SQL at the shell.  The GNU bin utilities are extremely optimized and scale suprisingly well with large amounts of data.
+
+ffn, what it is and why it exists
+
+Generating a "histogram" using `cut`, `sort` `uniq -c` `sort -n`.
+
+## Getting the most out of the terminal
+
+Basic Emacs key bindings work at the shell:
+
+* C-a
+* C-e
+* C-k
+* C-y
+* M-f
+* M-b
+* M-d
+* C-n
+* C-p
+* C-r
+* C-M-e
+
+Using `echo` to see what's going to happen before you do it for real.
+
+You build up complex shell piplines one step at a time ... testing each one as you go along.
+
+
+## Shell Scripting Best Practices
+
+Start small!  Like just with the things you typed in your `history`.
+
+Paradoxically staying in one spot helps you learn from your history ... instead of repating it.
+
+"stacking" multiple commands, make yourself a single button you can "push" to iterate.  Lets have a look at what I did with the recovery controller app and the tests I wrapped around it.
+
+Adapting things that don't want to be adapted.
+
+* involuntarily forcing stdin and stdout on things
+* putting things where you want them `<()` and `$()`
+
+```
+echo $(echo three) <(echo three)
+cat <(echo three)
+echo three | cat
+```
+
+Always use `$()` please don't ever use \`\`
+
+
+## Up Your Fancy
+
+if, for, while loops.  Here docs.  Shell scripts generating shell scripts (riak object expiry fixer).
