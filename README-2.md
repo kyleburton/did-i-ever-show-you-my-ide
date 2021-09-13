@@ -249,9 +249,13 @@ You build up complex shell piplines one step at a time ... testing each one as y
 
 ## Shell Scripting Best Practices
 
+Script it even if you're only going to do it once.  I'd like to talk about the idea of a `./scripts` or `./contrib` directory in our projects.  A spot where we can speak in repetable tools (executable documentation) vs having to read documentation (that we have to continually invest in) or worse yet, rely on the availability of another team member to talk us through things.
+
 Start small!  Like just with the things you typed in your `history`.
 
-Paradoxically staying in one spot helps you learn from your history ... instead of repating it.
+The shell has a lot of history and backward compatability.  This is both a blessing and a curse.  It's great b/c if something worked before it's likely to work now.  It's terrible because sometimes bugs and unexpected behavior is eternalized.  Thankfully you can transcend the vast majority of those caess by using the amazing and comprehensive [`shellcheck`](https://github.com/koalaman/shellcheck) tool to lint and otherwise fix your scripts.
+
+Paradoxically staying in one spot helps you learn from your history instead of repating it.
 
 "stacking" multiple commands, make yourself a single button you can "push" to iterate.  Lets have a look at what I did with the recovery controller app and the tests I wrapped around it.
 
@@ -272,3 +276,10 @@ Always use `$()` please don't ever use \`\`
 ## Up Your Fancy
 
 if, for, while loops.  Here docs.  Shell scripts generating shell scripts (riak object expiry fixer).
+
+
+# Where to go from here
+
+* [Bash Cookbook](https://www.oreilly.com/library/view/bash-cookbook-2nd/9781491975329/)
+* [Learning the Bash Shell](https://www.oreilly.com/library/view/learning-the-bash/0596009658/)
+* [Classic Shell Scripting](https://www.oreilly.com/library/view/classic-shell-scripting/0596005954/)
