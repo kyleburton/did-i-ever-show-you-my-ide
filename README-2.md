@@ -283,3 +283,4 @@ if, for, while loops.  Here docs.  Shell scripts generating shell scripts (riak 
 * [Bash Cookbook](https://www.oreilly.com/library/view/bash-cookbook-2nd/9781491975329/)
 * [Learning the Bash Shell](https://www.oreilly.com/library/view/learning-the-bash/0596009658/)
 * [Classic Shell Scripting](https://www.oreilly.com/library/view/classic-shell-scripting/0596005954/)
+* [Speed Matters](https://scattered-thoughts.net/writing/speed-matters/)
